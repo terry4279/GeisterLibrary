@@ -3,6 +3,7 @@
 
 #include "hand.hpp"
 #include "geister.hpp"
+#include "simulator.hpp"
 #include <string>
 #include <string_view>
 #include <array>
