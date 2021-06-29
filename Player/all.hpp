@@ -1,4 +1,5 @@
 #include "chototsuPlayer.hpp"
 #include "humanPlayer.hpp"
 #include "randomPlayer.hpp"
+#include "MCPlayer.hpp"
 #include "improveRandom.hpp"
