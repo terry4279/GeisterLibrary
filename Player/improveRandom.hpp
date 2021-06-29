@@ -30,11 +30,12 @@ public:
 
         auto legalMoves = candidateHand();
         std::uniform_int_distribution<int> serector1(0, legalMoves.size() - 1);
+        std::uniform_int_distribution<int> serector2(0, 100);
         auto action = legalMoves[serector1(mt) % legalMoves.size()];
         const std::array<Unit, 16>& units = game.allUnit();
         int distp[2],diste[2];
         diste[0]=diste[1]=distp[0]=distp[1]=100;
-
+        int upt=serector2(mt);
         for(const Unit& u: units){
             if(u.color() == UnitColor::Blue){
                 distp[0]=std::min(u.x()+u.y(),distp[0]);
@@ -45,7 +46,7 @@ public:
                 if(u.x() == 5 && u.y() == 0){
                     return Hand{u, Direction::East};
                 }
-                if(u.y() > 1 && serector1(mt) > legalMoves.size()-2){
+                if(u.y() > 1 && upt < 20){
                     return Hand{u, Direction::North};
                 }
             }else if(u.color() == UnitColor::Red){

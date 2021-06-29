@@ -121,6 +121,8 @@ double Simulator::playout(){
         Hand& m1 = lm[selector(mt)];
     //-------------------------------------------------------------
         const std::array<Unit, 16>& units = current.allUnit();
+        std::uniform_int_distribution<int> serector2(0, 100);
+        int upt = serector2(mt);
         for(const Unit& u: units){
             if(u.color() == UnitColor::Blue) {
                 if (u.x() == 0 && u.y() == 0) {
@@ -128,6 +130,9 @@ double Simulator::playout(){
                 }
                 if (u.x() == 5 && u.y() == 0) {
                     m1 = Hand{u, Direction::East};
+                }
+                if(u.y() > 1 && upt < 20){
+                    m1 = Hand{u, Direction::North};
                 }
             }
         }
