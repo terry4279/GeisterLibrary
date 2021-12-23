@@ -4,7 +4,7 @@ else
 	CXX ?= g++
 endif
 
-CXXFLAGS ?= -MMD -MP -std=c++17 -w -O
+CXXFLAGS ?= -fopenmp -MMD -MP -std=c++17 -w -O2
 
 ifeq ($(OS),Windows_NT)
 	LDFLAGS ?= -lws2_32 -lwsock32 -lwinmm

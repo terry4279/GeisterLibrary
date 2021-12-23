@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <unistd.h>
 #include "random.hpp"
 #include "hand.hpp"
 #include "result.hpp"
@@ -137,6 +138,7 @@ int run(std::shared_ptr<Player> player1, std::shared_ptr<Player> player2){
             g.mask().printBoard();
             game.changeSide();
         }
+
     }
 
     Result result = Result::OnPlay;
