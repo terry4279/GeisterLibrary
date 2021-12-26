@@ -112,16 +112,10 @@ double Simulator::playout(){
         selector.param(std::uniform_int_distribution<>::param_type(0, current.setLegalMove2nd(lm) - 1));
         Hand& m2 = lm[selector(mt)];
         //------------
-        const std::array<Unit, 16>& units = current.allUnit();
-        for (const Unit& u : units) {
-            if (u.color() == UnitColor::Red) {
-                if (u.x() == 0 && u.y() == 5) {
-                    m2 = Hand{ u, Direction::West };
-                }
-                if (u.x() == 5 && u.y() == 5) {
-                    m2 = Hand{ u, Direction::East };
-                }
-            }
+        for (auto move : current.getLegalMove2nd()) {
+            Unit u = move.unit;
+            if (u.is2nd() && (u.x() == 0 && u.y() == 5)) { m2 = Hand{ u, 'W' }; return -0.8; }
+            if (u.is2nd() && (u.x() == 5 && u.y() == 5)) { m2 = Hand{ u, 'E' }; return -0.8; }
         }
         //------------
         current.move(m2);
@@ -134,15 +128,10 @@ double Simulator::playout(){
         Hand& m1 = lm[selector(mt)];
     //-------------------------------------------------------------
         const std::array<Unit, 16>& units = current.allUnit();
-        for(const Unit& u: units){
-            if(u.color() == UnitColor::Blue) {
-                if (u.x() == 0 && u.y() == 0) {
-                    m1 = Hand{u, Direction::West};
-                }
-                if (u.x() == 5 && u.y() == 0) {
-                    m1 = Hand{u, Direction::East};
-                }
-            }
+        for(auto move : current.getLegalMove1st()){
+            Unit u = move.unit;
+            if (u.isBlue() && (u.x() == 0 && u.y() == 0)) { m1 = Hand{ u, 'W' }; }
+            if (u.isBlue() && (u.x() == 5 && u.y() == 0)) { m1 = Hand{ u, 'E' }; }
         }
     //------------------------------------------
         current.move(m1);
