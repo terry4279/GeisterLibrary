@@ -111,6 +111,19 @@ double Simulator::playout(){
         // selector.param(std::uniform_int_distribution<>::param_type(0, lm2.size() - 1));
         selector.param(std::uniform_int_distribution<>::param_type(0, current.setLegalMove2nd(lm) - 1));
         Hand& m2 = lm[selector(mt)];
+        //------------
+        const std::array<Unit, 16>& units = current.allUnit();
+        for (const Unit& u : units) {
+            if (u.color() == UnitColor::Red) {
+                if (u.x() == 0 && u.y() == 5) {
+                    m2 = Hand{ u, Direction::West };
+                }
+                if (u.x() == 5 && u.y() == 5) {
+                    m2 = Hand{ u, Direction::East };
+                }
+            }
+        }
+        //------------
         current.move(m2);
         if(current.isEnd())
             break;
