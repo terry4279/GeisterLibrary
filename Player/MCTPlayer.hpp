@@ -3,11 +3,11 @@
 #include "player.hpp"
 #include "simulator.hpp"
 
-class MCPlayer: public Player{
+class MCTPlayer: public Player{
     cpprefjp::random_device rd;
     std::mt19937 mt;
 public:
-    MCPlayer(): mt(rd()){
+    MCTPlayer(): mt(rd()){
     }
 
     virtual std::string decideRed(){

@@ -10,7 +10,7 @@ extern "C"{
 #ifdef _WIN32
 __declspec(dllexport)
 #endif
-RandomPlayer* createPlayer(){
+ImproveRandom* createPlayer(){
     return new ImproveRandom();
 }
 }
