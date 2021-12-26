@@ -3,3 +3,4 @@
 #include "randomPlayer.hpp"
 #include "MCPlayer.hpp"
 #include "improveRandom.hpp"
+#include "MCTPlayer.hpp"
