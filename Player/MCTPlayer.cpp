@@ -1,13 +1,13 @@
 #include <string>
 #include <iostream>
 #include <memory>
-#include "randomPlayer.hpp"
+#include "MTCPlayer.hpp"
 
 extern "C"{
 #ifdef _WIN32
 __declspec(dllexport)
 #endif
-RandomPlayer* createPlayer(){
-    return new RandomPlayer();
+MCTPlayer* createPlayer(){
+    return new MCTPlayer();
 }
 }
